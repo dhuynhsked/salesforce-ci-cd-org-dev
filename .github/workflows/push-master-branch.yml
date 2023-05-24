@@ -65,9 +65,8 @@ jobs:
             - name: Generate Tag
               id: tag
               run: |
-                DATE=$(date +%d-%m-%y)
-                PR_COUNT=$(git log --merges --format=%cd --date=short | grep $DATE | wc -l | xargs)
-                TAG="$DATE-$PR_COUNT"
+                DATE=$(date +"%y-%m-%d-%H-%M")
+                TAG="$DATE"
                 echo "::set-output name=TAG::$TAG"
       
             - name: Create and push tag
